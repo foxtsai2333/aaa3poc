@@ -1,3 +1,4 @@
+
 pluginManagement {
     repositories {
         google {
@@ -9,6 +10,9 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven {
+            setUrl("https://jitpack.io")
+        }
     }
 }
 
@@ -17,10 +21,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
+        maven {
+            setUrl("https://jitpack.io")
+        }
     }
 }
 
+
+
 rootProject.name = "AARPOC"
 include(":app")
-//include(":aaa3")
+include(":aaa3")

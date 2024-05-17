@@ -35,11 +35,22 @@ android {
 
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            afterEvaluate {
+/*
+val sourcesJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    from(android.sourceSets.getByName("main").java.srcDirs)
+}
+*/
+
+afterEvaluate {
+    publishing {
+        publications {
+            val release by publications.registering(MavenPublication::class) {
                 from(components["release"])
+                //artifact(sourcesJar.get())
+                artifactId = "aaa3"
+                groupId = "com.csstalker"
+                version = "0.0.1"  //github release of com.github.danbrough.jitpackdemo
             }
         }
     }
