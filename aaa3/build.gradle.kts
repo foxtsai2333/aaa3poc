@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    `maven-publish`
 }
 
 android {
@@ -29,6 +30,18 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.csstalker"
+            artifactId = "aaa3poc"
+            version = "0.0.1"
+
+            //from(components["java"])
+        }
     }
 }
 
