@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    `maven-publish`
+    id("maven-publish")
 }
 
 android {
@@ -33,35 +33,34 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    /*
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
-    */
+
 }
 
 publishing {
     publications {
         register<MavenPublication>("release") {
-            //groupId = "com.csstalker.aaa3poc"
-            //artifactId = project.archivesName.get()
-            groupId = "com.csstalker"
-            artifactId = "aaa3"
-            version = project.version.toString()
-            pom.packaging = "aar"
-            /*
-            artifact("${layout.buildDirectory}/outputs/aar/aaa3-release.aar") {
-                builtBy(tasks.getByName("assemble"))
-            }
-            */
             afterEvaluate {
                 from(components["release"])
             }
         }
     }
 }
+
+/*
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.csstalker"
+                artifactId = "aaa3"
+                version = project.version.toString()
+                artifact("$buildDir/outputs/aar/aaa3-release.aar")
+            }
+        }
+    }
+}
+*/
 
 dependencies {
 

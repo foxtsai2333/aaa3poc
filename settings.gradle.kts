@@ -17,9 +17,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
 rootProject.name = "AARPOC"
 include(":app")
-include(":aaa3")
+//include(":aaa3")
